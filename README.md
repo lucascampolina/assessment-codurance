@@ -1,28 +1,18 @@
 # Distributed High Throughput Rate Limiter
 
-Rate limiter distribuído para ambientes de alta throughput (100M+ chamadas/min por key).
+A distributed rate limiter designed for high throughput environments (100M+ calls/min per key).
 
-## Como funciona
+## How it works
 
-Usa batching local para minimizar chamadas de rede ao store distribuído. Cada instância acumula contagens localmente e faz flush periodicamente, garantindo precisão aproximada com overhead mínimo de rede.
+Uses local batching to minimize network calls to the distributed store. Each server instance accumulates request counts locally and periodically flushes them to the shared store, providing approximate accuracy with minimal network overhead.
 
-## Requisitos
+## Requirements
 
 - Java 21
 - Maven
 
-## Build e Testes
+## Build & Test
 
 ```bash
 mvn clean test
-```
-
-## Estrutura
-
-```
-src/main/java/com/codurance/ratelimiter/
-  DistributedKeyValueStore.java                  - Interface do store distribuído
-  DistributedHighThroughputRateLimiter.java      - Implementação do rate limiter
-src/test/java/com/codurance/ratelimiter/
-  DistributedHighThroughputRateLimiterTest.java  - Testes unitários
 ```
